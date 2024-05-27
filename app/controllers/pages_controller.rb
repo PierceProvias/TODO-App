@@ -4,12 +4,6 @@ class PagesController < ApplicationController
     
   end
 
-  def profile
-    if Current.user    
-    else
-      redirect_to root_path, notice: "Please sign in first"
-    end
-  end
-
-  
+  def about
+  end  
 end

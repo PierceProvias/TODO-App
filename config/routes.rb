@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "pages#home"
+  get "about", to: "pages#about"
   
-  get "profile", to: "pages#profile"
   get '/u/:id', to: "users#profile", as: "user"
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
