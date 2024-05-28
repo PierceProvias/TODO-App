@@ -11,27 +11,46 @@
     </div>
   <% end %>
 
-  <div>
-    <%= f.label :title, style: "display: block" %>
-    <%= f.text_field :title %>
+
+<form class="w-full max-w-lg">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+      Task
+      </label>
+      <%= f.text_field :title, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white", placeholder:"Task to complete"%>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :Description, style: "display: block" %>
-    <%= f.text_area :body %>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+      Details
+      </label>
+      <%= f.text_area :body, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white", placeholder:"Task to complete"%>
+    </div>
   </div>
 
-   <div>
-    <%= f.label :due_date, style: "display: block" %>
-    <%= f.date_field :due_date %>
-   </div>
 
-    <div>
-    <%= f.label :due_time, style: "display: block" %>
-    <%= f.time_field :due_time %>
+ <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+      Due Date
+      </label>
+      <%= f.date_field :due_date, class: "appearance-none block w-half bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white", placeholder:"Task to complete"%>
+    </div>
   </div>
 
-  <div>
-    <%= f.submit %>
+   <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+      Time
+      </label>
+      <%= f.time_field :due_time, class: "appearance-none block w-half bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white", placeholder:"Task to complete"%>
+    </div>
+  </div>
+
+  <div class="container mx-auto">
+    <%= f.submit "Create Task", class:"flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded" %>
   </div>
 <% end %>

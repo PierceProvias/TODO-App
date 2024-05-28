@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
   
+  before_action :set_task, only: %i[ show edit destroy ]
+
   
   def index
     @tasks = Task.all.order(created_at: :desc)
@@ -19,16 +21,16 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = Current.user   # error here 
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+    
+      respond_to do |format|
+        if @task.save
+          format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
+          format.json { render :show, status: :created, location: @task }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   def destroy
@@ -42,7 +44,13 @@ class TasksController < ApplicationController
 
   private
 
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
   def task_params
     params.require(:task).permit(:title, :body, :due_date, :due_time, :completed_task)
   end
+
+
 end
