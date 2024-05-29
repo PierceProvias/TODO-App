@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   
-  before_action :set_task, only: %i[ show edit destroy ]
+  before_action :set_task, only: %i[ show edit update destroy ]
 
   
-  def index
+  def index 
     @tasks = Task.where(user: Current.user).order(created_at: :desc)
   end
 
@@ -16,6 +16,15 @@ class TasksController < ApplicationController
   end
 
   def edit
+    render :edit
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to @task
+    else
+      render :edit
+    end
   end
 
   def create
