@@ -1,0 +1,18 @@
+<div >
+  <p>
+    <strong>Task:</strong>
+    <%= task.title %>
+  </p>
+
+  <p>
+    <strong>Description</strong>
+    <%= task.body %>
+  </p>
+
+    <p>
+    <strong>Posted by:</strong>
+    <%= link_to task.user.first_name, user_path(task.user) %>
+  </p>
+
+
+</div>

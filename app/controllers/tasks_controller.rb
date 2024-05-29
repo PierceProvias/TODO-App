@@ -22,6 +22,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = Current.user   # error here 
     
+    if @task.user
       respond_to do |format|
         if @task.save
           format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
@@ -31,6 +32,10 @@ class TasksController < ApplicationController
           format.json { render json: @task.errors, status: :unprocessable_entity }
         end
       end
+    else
+      redirect_to root_path, alert: "Need to be logged in to create a task" 
+    end
+      
   end
 
   def destroy
