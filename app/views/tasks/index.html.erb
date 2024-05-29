@@ -3,7 +3,10 @@
   <div >  
     <% @tasks.each do |task| %>
       <%= render task %>
-      <p>
+      <%= link_to "Show", task %>
     <% end %>
   </div>
 </div>
+
+
+
