@@ -49,8 +49,15 @@
     </div>
   </div>
 
-  <div class="container mx-auto">
-    <%= f.submit "Create Task", class:"flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded" %>
-  </div>
+  <% if current_page?(new_task_path) %>
+    <div class="container mx-auto">
+      <%= f.submit "Create Task", class:"flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+    </div>
+  <% else %>
+    <div class="container mx-auto">
+      <%= f.submit "Edit Task", class:"flex-shrink-0 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+    </div>
+  <% end %>
+
 </form>
 <% end %>
