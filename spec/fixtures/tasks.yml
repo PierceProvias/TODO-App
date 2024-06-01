@@ -1,0 +1,37 @@
+# spec/fixtures/users.yml
+homework:
+  title: Valid title
+  body: Valid description of task
+  due_date: "2024-07-02"
+  user: :pierce
+
+project:
+  title: Valid title
+  body: Valid description of task
+  due_date: "2024-07-02"
+  user: :pierce
+
+no_title:
+  title: null
+  body: Valid description of task
+  due_date: "2024-07-02"
+  user: :pierce
+
+no_body:
+  title: Valid title
+  body: null
+  due_date: "2024-07-02"
+  user: :pierce
+
+no_date:
+  title: Valid title
+  body: Valid description of task
+  due_date: null
+  user: :pierce
+
+
+nil:
+  title: null
+  body: null
+  due_date: null
+  user: :pierce

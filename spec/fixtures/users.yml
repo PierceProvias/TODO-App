@@ -1,0 +1,7 @@
+# spec/fixtures/users.yml
+pierce:
+  first_name: Pierce
+  last_name: Provias
+  email: p.provias@outlook.com
+  password_digest: 12345
+  
