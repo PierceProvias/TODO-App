@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class=" ml-2 mb-4 mt-7 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-gray"> My Tasks (<%= @tasks.count %>)</h1>
 
-  <ul class="bg-white shadow overflow-hidden sm:rounded-md max-w-2xl ml-2 mt-16">  
+  <ul class="bg-white shadow overflow-hidden sm:rounded-md max-w-2xl ml-2 mt-12">  
     <% @tasks.each do |task| %>
       <%= render task %>
       <div class="ml-6 mb-2 flex items-center justify-between">
@@ -10,6 +10,7 @@
       </div>
     <% end %>
   </ul>
+  </br>
 </div>
 
 

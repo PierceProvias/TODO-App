@@ -4,11 +4,8 @@ import { enter, leave, toggle } from 'el-transition'
 
 export default class extends Controller {
   
-  static targets = ['openUserMenu', 'button'];
+  static targets = ['openUserMenu'];
 
-  //document.addEventListener('DOMContentLoaded', function() {
-  //});
-  
   connect() {
     console.log('enter', enter);
     this.openUserMenuTarget.addEventListener('click', this.toggleDropdownMenu)

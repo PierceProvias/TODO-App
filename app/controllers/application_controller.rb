@@ -9,5 +9,10 @@ class ApplicationController < ActionController::Base
     def require_user_logged_in!
         redirect_to sign_in_path, alert: "You must be signed in to do that." if Current.user.nil?
     end
+
+
+    #def render_404
+    #  raise ActionController::RoutingError.new('Not Found')
+    #end 
 end
  

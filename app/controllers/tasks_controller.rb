@@ -29,7 +29,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.user = Current.user   # error here 
+    @task.user = Current.user 
     
     if @task.user
       respond_to do |format|

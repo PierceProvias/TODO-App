@@ -19,7 +19,7 @@
                  <p class="text-sm font-medium text-gray-500">Status: <span class="text-red-600">Inactive</span></p>
               <% end %>
                 <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_date %></a>
-                <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_time.strftime("%I:%M%p") %></a>
+                <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_time.strftime("%I:%M%p") if task.due_time != nil %></a>
             </div>
         </div>
   </li>
@@ -31,16 +31,18 @@
     </div>
     <div class="mt-4 flex items-center justify-between">
       <% if Time.now.strftime("%F").to_date < task.due_date %>
-        <%if Time.now.strftime("%I:%M%p").to_time <= task.due_time.strftime("%I:%M%p").to_time%>
+        <p class="text-sm font-medium text-gray-500">Status: <span class="text-green-600">Active</span></p>
+      <% elsif Time.now.strftime("%F").to_date == task.due_date %>
+        <%if Time.now.strftime("%I:%M%p").to_time < task.due_time.strftime("%I:%M%p").to_time%>
           <p class="text-sm font-medium text-gray-500">Status: <span class="text-green-600">Active</span></p>
-        <%else%>
-          <p class="text-sm font-medium text-gray-500">Status: <span class="text-green-600">Active</span></p>
+        <%else %>
+          <p class="text-sm font-medium text-gray-500">Status: <span class="text-red-600">Inactive</span></p>
         <%end%>
       <% else %>
         <p class="text-sm font-medium text-gray-500">Status: <span class="text-red-600">Inactive</span></p>
       <% end %>
         <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_date %></a>
-        <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_time.strftime("%I:%M%p") %></a>
+        <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_time.strftime("%I:%M%p") if task.due_time != nil %></a>
     </div>
   </div>
 <% end %>
