@@ -1,25 +1,61 @@
+# spec/views/tasks/index.html.erb_spec.rb
+
 require 'rails_helper'
 
-#need to fix this spec
+RSpec.describe "tasks/index.html.erb", type: :view do
+  let(:task) { double('Task', title: 'Test Task', body: 'This is a test task body', due_date: due_date, due_time: due_time) }
+  let(:due_date) { Date.today }
+  let(:due_time) { Time.now + 1.hour }
 
-RSpec.describe "tasks/index", type: :view do
-
-  fixtures :tasks
- 
-  before(:each) do 
-    assign(:posts, [tasks[:homework], tasks(:project)])
-  end
-  
-
-  it 'renders a list of tasks' do
-    task = tasks(:homework)
-    task2 = tasks(:project)
-  
+  before do
+    allow(view).to receive(:current_page?).with(tasks_path).and_return(true)
+    assign(:tasks, [task])
     render
-    assert_select 'ul>li', text: 'Valid Title'.to_s, count: 2
-    assert_select 'ul>li', text: 'Valid description of task'.to_s, count: 2
-    assert_select 'ul>li', text: "2024-07-02".to_s, count: 2
-    
   end
 
+  context 'when current page is tasks_path' do
+    it 'renders the task title' do
+      expect(rendered).to have_css('h3', text: 'Test Task')
+    end
+
+    it 'renders the task body' do
+      expect(rendered).to have_css('p', text: 'This is a test task body')
+    end
+
+    context 'when the task is active' do
+      let(:due_date) { Date.today + 1.day }
+      
+      it 'shows the status as Active' do
+        expect(rendered).to have_css('p', text: 'Status: Active')
+      end
+    end
+
+    context 'when the task is inactive' do
+      let(:due_date) { Date.today - 1.day }
+      
+      it 'shows the status as Inactive' do
+        expect(rendered).to have_css('p', text: 'Status: Inactive')
+      end
+    end
+
+    context 'when the task is due today' do
+      let(:due_date) { Date.today }
+      
+      context 'and the current time is before the due time' do
+        let(:due_time) { Time.now + 1.hour }
+        
+        it 'shows the status as Active' do
+          expect(rendered).to have_css('p', text: 'Status: Active')
+        end
+      end
+
+      context 'and the current time is after the due time' do
+        let(:due_time) { Time.now - 1.hour }
+        
+        it 'shows the status as Inactive' do
+          expect(rendered).to have_css('p', text: 'Status: Inactive')
+        end
+      end
+    end
+  end
 end

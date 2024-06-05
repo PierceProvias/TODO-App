@@ -27,9 +27,11 @@
   <div class="px-4 py-5 sm:px-6">
     <div class="flex flex-wrap items-center justify-between">
       <h3 class="text-lg leading-6 font-medium text-gray-900"><strong><%= task.title %></strong></h3>
-      <p class="mt-1 max-w-2xl text-sm text-gray-500"><%= task.body %></p>
+      <div class="container">
+        <p class="mt-2 max-w-2xl text-sm text-gray-500"><%= task.body %></p>
+      </div>
     </div>
-    <div class="mt-4 flex items-center justify-between">
+    <div class="mt-4 items-center justify-between">
       <% if Time.now.strftime("%F").to_date < task.due_date %>
         <p class="text-sm font-medium text-gray-500">Status: <span class="text-green-600">Active</span></p>
       <% elsif Time.now.strftime("%F").to_date == task.due_date %>
@@ -41,8 +43,11 @@
       <% else %>
         <p class="text-sm font-medium text-gray-500">Status: <span class="text-red-600">Inactive</span></p>
       <% end %>
+      <div class="container">
         <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_date %></a>
+        </br>
         <a class="font-medium text-indigo-600 hover:text-indigo-500"><%= task.due_time.strftime("%I:%M%p") if task.due_time != nil %></a>
+      </div>
     </div>
   </div>
 <% end %>

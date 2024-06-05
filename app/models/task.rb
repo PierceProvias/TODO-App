@@ -7,3 +7,4 @@ class Task < ApplicationRecord
   validates :due_date, presence: true
   validates :due_time, presence: true
 end
+  

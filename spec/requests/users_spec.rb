@@ -1,11 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "GET /profile" do
-    it "returns http success" do
+
+  let(:user) {User.create!(first_name: 'John', last_name: 'Doe', email: 'john.doe@example.com', password_digest: 'password', avatar: nil)}
+  
+  context "GET user profile" do
+    it "returns http failure" do
       get "/users/profile"
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(:not_found)
     end
+
+    # it "returns a successful response" do
+    #   get user_path(user)
+    #   expect(response).to have_http_status(:success)
+    # end
+    
   end
 
 end

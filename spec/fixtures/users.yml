@@ -1,7 +1,30 @@
 # spec/fixtures/users.yml
-pierce:
-  first_name: Pierce
+valid_user:
+  first_name: John
+  last_name: Doe
+  email: john.doe@example.com
+  password_digest: password
+
+no_first_name:
+  first_name: null
   last_name: Provias
+  email: p.provias@outlook.com
+  password_digest: "12345"
+
+no_last_name:
+  first_name: Pierce
+  last_name: null
   email: p.provias@outlook.com
   password_digest: 12345
   
+no_email:
+  first_name: Pierce
+  last_name: Provias
+  email: null
+  password_digest: 12345
+
+no_password_digest:
+  first_name: Pierce
+  last_name: Provias
+  email: p.provias@outlook.com
+  password_digest: null
