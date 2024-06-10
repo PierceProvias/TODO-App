@@ -1,6 +1,6 @@
 <% if Current.user%>
   <div class="container">
-    <h1 class=" ml-2 mb-4 mt-7 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-gray"> <%=Current.user.first_name %> you have <%= Current.user.tasks.count %> tasks</h1>
+    <h1 class=" ml-2 mb-4 mt-7 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-4xl dark:text-gray"> <%=Current.user.first_name %> ou have <%= Current.user.tasks.count %> tasks</h1>
 
     <ul class="bg-white shadow overflow-hidden sm:rounded-md max-w-2xl ml-2 mt-12">  
       <% Current.user.tasks.each do |task| %>

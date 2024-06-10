@@ -10,10 +10,7 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(:not_found)
     end
 
-    # it "returns a successful response" do
-    #   get user_path(user)
-    #   expect(response).to have_http_status(:success)
-    # end
+    
     
   end
 

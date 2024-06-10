@@ -6,10 +6,6 @@ RSpec.describe PagesController, type: :request do
       get '/'
       expect(response).to have_http_status(:success)
     end
-    #it 'renders the home template' do
-    #  get '/'
-    #  expect(response).to render_temlate('home')
-    #end
   end
 
   context 'GET #about' do
